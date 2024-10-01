@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    int n;
+    double n;
     cin >> n;
     if (n >= 90 && n <= 100) {
         cout << "S";
