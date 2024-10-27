@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yangxinhan/Documents/GitHub/C-practice/zerojudge",
-      "program": "/Users/yangxinhan/Documents/GitHub/C-practice/zerojudge/build/Debug/outDebug"
+      "cwd": "/Users/yangxinhan/Documents/GitHub/C-practice/AtCoder",
+      "program": "/Users/yangxinhan/Documents/GitHub/C-practice/AtCoder/build/Debug/outDebug"
     }
   ]
 }
