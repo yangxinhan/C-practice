@@ -1,10 +1,12 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-#define  ll long long
+#define ll long long
 
 bool isPerfectPower(int x, int p) {
-    if (x < 0 && p % 2 == 0) return false;
+    if (x < 0 && p % 2 == 0) {
+        return false;
+    }
     double b = pow(abs(x), 1.0/p);
     int lower = floor(b);
     int upper = ceil(b);
@@ -21,8 +23,9 @@ bool isPerfectPower(int x, int p) {
 }
 
 int findLargestPower(int x) {
-    if (x == 1 || x == -1) return 1;
-    if (x == 0) return 1;
+    if (abs(x) <= 2) {
+        return 1;
+    }
     for (int p = 32; p >= 1; p--) {
         if (isPerfectPower(x, p)) {
             return p;

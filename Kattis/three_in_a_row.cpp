@@ -20,7 +20,7 @@ ll three_numbers(ll n) {
 }
 
 int main() {
-    long long n;
+    ll n;
     cin >> n;
     ll result = three_numbers(n);
     cout << result << endl;

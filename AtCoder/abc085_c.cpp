@@ -5,17 +5,21 @@ using namespace std;
 int main() {
     int N, Y;
     cin >> N >> Y;
-    int x, y, z;
-    for (x = 0; x <= N / 10; x++) {
-        for (y = 0; y <= N / 5; y++) {
-            z = N - 10 * x - 5 * y;
-            if (z >= 0 && 10000 * x + 5000 * y + 1000 * z == Y) {
-                cout << x << " " << y << " " << z << endl;
-                return 0;
+    int x = -1, y = -1, z = -1;
+
+    for (int i = 0; i <= N; i++) {
+        for (int j = 0; j <= N - i; j++) {
+            int k = N - i - j;
+            if (10000 * i + 5000 * j + 1000 * k == Y) {
+                x = i;
+                y = j;
+                z = k;
+                break;
             }
         }
+        if (x != -1) break;
     }
-    cout << "-1 -1 -1" << endl;
-    
+
+    cout << x << " " << y << " " << z << endl;
     return 0;
 }
