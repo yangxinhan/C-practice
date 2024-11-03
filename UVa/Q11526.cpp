@@ -1,22 +1,28 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 #define ll long long
 
-ll H(int n){
+ll H(int n) {
     ll res = 0;
-    for( int i = 1; i <= n; i=i+1){
-        res = (res + n/i);
+    for (ll i = 1, last; i <= n; i = last + 1) {
+        ll q = n / i;
+        last = n / q;
+        res += q * (last - i + 1);
     }
     return res;
 }
 
 int main() {
-    ll n, a;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> a;
-        cout << H(a) << endl;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    
+    ll t, n;
+    cin >> t;
+    while (t--) {
+        cin >> n;
+        cout << H(n) << '\n';
     }
-
     return 0;
 }

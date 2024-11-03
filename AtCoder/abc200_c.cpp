@@ -1,31 +1,24 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
-    int n, all = 0;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    
+    int n;
     cin >> n;
-    int arr[n];
+    vector<long long> mod(200, 0);
     for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+        int x;
+        cin >> x;
+        mod[x % 200]++;
     }
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (i == j) {
-                continue;
-            }else {
-                if(arr[i] - arr[j] >= 200 || arr[i] - arr[j] <= -200) {
-                    if (arr[i] - arr[j] %200 == 0) {
-                        all++;
-                    }
-                }else if (arr[i] - arr[j] == 0) {
-                    all++;
-                }
-            }
-            
-        }
+    long long ans = 0;
+    for (int i = 0; i < 200; i++) {
+        ans += mod[i] * (mod[i] - 1) / 2;
     }
-    cout << all << endl;
-
+    
+    cout << ans << endl;
     return 0;
 }
