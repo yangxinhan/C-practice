@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yangxinhan/Documents/GitHub/C-practice/UVa",
-      "program": "/Users/yangxinhan/Documents/GitHub/C-practice/UVa/build/Debug/outDebug"
+      "cwd": "/Users/yangxinhan/Documents/GitHub/C-practice/Kattis",
+      "program": "/Users/yangxinhan/Documents/GitHub/C-practice/Kattis/build/Debug/outDebug"
     }
   ]
 }
