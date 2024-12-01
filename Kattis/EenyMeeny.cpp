@@ -2,80 +2,59 @@
 #include <vector>
 #include <string>
 #include <sstream>
-
 using namespace std;
 
-// 定義團隊結構
 struct Team {
     vector<string> members;
-    bool first = false;  // 標記是否為第一個形成的團隊
+    bool isFirstTeam;
+    Team() : isFirstTeam(false) {}
 };
 
-// 模擬一輪念詞選人
-int countRhyme(const vector<string>& rhyme, int start, int remaining) {
-    int pos = start;
-    for (const string& word : rhyme) {
-        if (remaining == 0) break;
-        pos = (pos + 1) % remaining;
-    }
-    return pos;
-}
-
-// 解決團隊選擇問題的主要函數
-pair<Team, Team> solveTeamSelection(const vector<string>& rhyme, vector<string>& kids) {
+pair<Team, Team> solveTeamSelection(const string& rhyme, vector<string>& kids) {
     Team team1, team2;
-    vector<bool> selected(kids.size(), false);  // 記錄每個小孩是否已被選擇
-    int remainingKids = kids.size();  // 剩餘未被選擇的小孩數量
-    int currentPos = 0;  // 從第一個小孩開始
-    bool firstTeamFormed = false;  // 是否已確定第一個團隊
+    vector<bool> used(kids.size(), false);
     
-    // 持續直到所有小孩都被分配到團隊
-    while (remainingKids > 0) {
-        // 找出下一個被選中的小孩位置
-        int selectedPos = countRhyme(rhyme, currentPos, remainingKids);
+    // 計算韻文單詞數
+    istringstream iss(rhyme);
+    string word;
+    int wordCount = 0;
+    while (iss >> word) wordCount++;
+    
+    int pos = -1;
+    int remaining = kids.size();
+    bool firstTeam = true;
+    
+    // 模擬數數遊戲
+    while (remaining > 0) {
+        int steps = wordCount;
+        while (steps > 0) {
+            pos = (pos + 1) % kids.size();
+            if (!used[pos]) steps--;
+        }
         
-        // 找出實際被選中的小孩（考慮已被選走的小孩）
-        int actualKidIndex = -1;
-        int count = 0;
-        for (int i = 0; i < kids.size(); i++) {
-            if (!selected[i]) {
-                if (count == selectedPos) {
-                    actualKidIndex = i;
-                    break;
-                }
-                count++;
+        used[pos] = true;
+        remaining--;
+        
+        // 分配到對應隊伍
+        if (firstTeam) {
+            team1.members.push_back(kids[pos]);
+            if (team1.members.size() == 1) {
+                team1.isFirstTeam = true;
+            }
+        } else {
+            team2.members.push_back(kids[pos]);
+            if (team2.members.size() == 1 && !team1.isFirstTeam) {
+                team2.isFirstTeam = true;
             }
         }
         
-        // 標記該小孩為已選擇
-        selected[actualKidIndex] = true;
-        string selectedKid = kids[actualKidIndex];
-        
-        // 決定將小孩分配到哪個團隊
-        if (remainingKids % 2 == 0) {  // 剩餘人數為偶數時分配到第二隊
-            team2.members.push_back(selectedKid);
-            if (!firstTeamFormed) {
-                team1.first = true;
-                firstTeamFormed = true;
-            }
-        } else {  // 剩餘人數為奇數時分配到第一隊
-            team1.members.push_back(selectedKid);
-            if (!firstTeamFormed) {
-                team2.first = true;
-                firstTeamFormed = true;
-            }
-        }
-        
-        // 更新剩餘小孩數量和當前位置
-        remainingKids--;
-        currentPos = selectedPos;
+        firstTeam = !firstTeam;
     }
     
-    return {team1, team2};
+    return make_pair(team1, team2);
 }
 
 int main() {
-    // 讀取念詞
     string rhymeLine;
     getline(cin, rhymeLine);
     vector<string> rhyme;
@@ -84,46 +63,39 @@ int main() {
     while (ss >> word) {
         rhyme.push_back(word);
     }
-    
-    // 讀取小孩數量
+
     int n;
     cin >> n;
-    cin.ignore();  // 清除換行符
-    
-    // 讀取小孩名字
+    cin.ignore();
+
     vector<string> kids;
     for (int i = 0; i < n; i++) {
         string name;
         getline(cin, name);
         kids.push_back(name);
     }
-    
-    // 解決問題
-    auto [team1, team2] = solveTeamSelection(rhyme, kids);
-    
-    // 按照要求順序輸出結果
-    if (team1.first) {
-        cout << team1.members.size();
+ 
+    auto [team1, team2] = solveTeamSelection(rhymeLine, kids);
+
+    // 先輸出第一個選手所在的隊伍
+    if (team1.isFirstTeam) {
+        cout << team1.members.size() << "\n";
         for (const string& member : team1.members) {
-            cout << " " << member;
+            cout << member << "\n";
         }
-        cout << endl;
-        cout << team2.members.size();
+        cout << team2.members.size() << "\n";
         for (const string& member : team2.members) {
-            cout << " " << member;
+            cout << member << "\n";
         }
-        cout << endl;
     } else {
-        cout << team2.members.size();
+        cout << team2.members.size() << "\n";
         for (const string& member : team2.members) {
-            cout << " " << member;
+            cout << member << "\n";
         }
-        cout << endl;
-        cout << team1.members.size();
+        cout << team1.members.size() << "\n";
         for (const string& member : team1.members) {
-            cout << " " << member;
+            cout << member << "\n";
         }
-        cout << endl;
     }
     
     return 0;
