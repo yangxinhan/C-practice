@@ -16,16 +16,16 @@ int main() {
         x++;
     }
     
-    string result = "";
+    string x = "";
     while (decimal > 0) {
-        result = to_string(decimal % b) + result;
+        x = to_string(decimal % b) + x;
         decimal /= b;
     }
     
     if (c == 0) {
         cout << "0\n";
     } else {
-        cout << result << "\n";
+        cout << x << "\n";
     }
     
     return 0;

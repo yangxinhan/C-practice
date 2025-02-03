@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yangxinhan/Documents/GitHub/C-practice/Kattis",
-      "program": "/Users/yangxinhan/Documents/GitHub/C-practice/Kattis/build/Debug/outDebug"
+      "cwd": "/Users/yangxinhan/Documents/GitHub/C-practice/codeforces/季中賽",
+      "program": "/Users/yangxinhan/Documents/GitHub/C-practice/codeforces/季中賽/build/Debug/outDebug"
     }
   ]
 }

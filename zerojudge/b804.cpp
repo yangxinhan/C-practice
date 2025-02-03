@@ -85,8 +85,8 @@ int main() {
     }
     
     Solution solution;
-    int result = solution.getMaxScore(farmland);
-    cout << result << endl;
+    int x = solution.getMaxScore(farmland);
+    cout << x << endl;
     
     return 0;
 }

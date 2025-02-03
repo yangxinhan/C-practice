@@ -22,8 +22,8 @@ ll three_numbers(ll n) {
 int main() {
     ll n;
     cin >> n;
-    ll result = three_numbers(n);
-    cout << result << endl;
+    ll x = three_numbers(n);
+    cout << x << endl;
     
     return 0;
 }

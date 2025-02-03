@@ -16,9 +16,9 @@ int main() {
             curX--;
         } else if (direction == "down") {
             curX++;
-        } else if (direction == "left") {
+        } else if (direction == "l") {
             curY--;
-        } else if (direction == "right") {
+        } else if (direction == "r") {
             curY++;
         }
         

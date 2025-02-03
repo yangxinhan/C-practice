@@ -25,17 +25,17 @@ int main() {
     
     string moves;
     cin >> moves;
-    string result;
+    string x;
     
     for (int i = 0; i < moves.length(); i++) {
         if (i + 2 < moves.length() && isCombo(moves, i)) {
-            result += 'C';
+            x += 'C';
             i += 2;  // 跳過組合中的另外兩個動作
         } else {
-            result += getCounter(moves[i]);
+            x += getCounter(moves[i]);
         }
     }
     
-    cout << result << '\n';
+    cout << x << '\n';
     return 0;
 }

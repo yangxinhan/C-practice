@@ -21,12 +21,12 @@ int main() {
             }
         }
         
-        long long result = 0;
+        long long x = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            result += numbers[i] * pow(60, numbers.size() - 1 - i);
+            x += numbers[i] * pow(60, numbers.size() - 1 - i);
         }
         
-        cout << result << endl;
+        cout << x << endl;
     }
     return 0;
 }

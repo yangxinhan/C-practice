@@ -9,14 +9,14 @@ string encode(string s, int n) {
 
     reverse(s.begin(), s.end());
 
-    string result;
+    string x;
     for (char c : s) {
         int pos = valid.find(c);
         pos = (pos + n) % 28;
-        result += valid[pos];
+        x += valid[pos];
     }
     
-    return result;
+    return x;
 }
 
 int main() {

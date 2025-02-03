@@ -3,16 +3,16 @@ using namespace std;
 typedef long long ll;
 
 ll mod_pow(ll a, ll b, ll c) {
-    ll result = 1;
+    ll x = 1;
     a %= c;
     while (b > 0) {
         if (b % 2 == 1) {
-            result = (result * a) % c;
+            x = (x * a) % c;
         }
         a = (a * a) % c;
         b /= 2;
     }
-    return result;
+    return x;
 }
 
 int main() {
