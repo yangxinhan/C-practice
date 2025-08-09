@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yangxinhan/Documents/GitHub/C-practice/TOJ",
-      "program": "/Users/yangxinhan/Documents/GitHub/C-practice/TOJ/build/Debug/outDebug"
+      "cwd": "/Users/yangxinhan/Downloads/Github/C-practice/codeforces/季末賽",
+      "program": "/Users/yangxinhan/Downloads/Github/C-practice/codeforces/季末賽/build/Debug/outDebug"
     }
   ]
 }
